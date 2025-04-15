@@ -6,3 +6,4 @@ Steps taken in this Project:
   Added the credidentials of this service pricipal in the secrets for Github Actons
   Added a ARM-template for a storage account
   Added and edited a YAML file for automatization. 
+  
