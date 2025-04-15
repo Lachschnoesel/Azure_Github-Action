@@ -1,22 +1,27 @@
 on: [push]
 
-name: AzArmDeploy
+name: AzureARMDeploy
 
-jobs: 
-  deploy:
-    runs-on: ubunto-latest
-    steps:
-      - name: azure/login@v1
-        uses: 
-          creds: ${{secrets.AZ_SERVICE_PRINCIPAL}}
-      - name: Code check
-        uses: action/checkout@v2
+jobs:
+
+    deploy:
+      runs-on: ubuntu-latest
+      steps:
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZ_SERVICE_PRINCIPAL }}
+
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
       - name: Deploy ARM Template
         uses: azure/CLI@v1
-        with: 
+        with:
           inlineScript: |
-            az deployment group create 
-            -- name StorageAccountDeployment
-            --resource-group savedevgithubdeploy
-            --template-file armtemplates/storageaccounts.json
+            az deployment group create \
+            --name StorageAccountDeployment \
+            --resource-group savdevgithubdeploy \
+            --template-file armtemplates/storageaccount.json \
             --parameters storageAccountType=Standard_GRS
