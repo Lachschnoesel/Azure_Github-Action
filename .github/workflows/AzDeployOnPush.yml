@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: azure/login@v1
         uses: 
-          creds: ${{AZ_SERVICE_PRINCIPAL.AZURE_CREDENTIALS}}
+          creds: ${{secrets.AZ_SERVICE_PRINCIPAL}}
       - name: Code check
         uses: action/checkout@v2
       - name: Deploy ARM Template
