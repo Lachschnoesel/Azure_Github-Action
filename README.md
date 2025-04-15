@@ -7,3 +7,5 @@ Steps taken in this Project:
   Added a ARM-template for a storage account
   Added and edited a YAML file for automatization. 
   
+
+After sucessful creation the service principal will be deleted, so further pushes will result in a error, because the referenced AD SP is no longer in the tenant
