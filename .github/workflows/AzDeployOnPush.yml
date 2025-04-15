@@ -23,5 +23,5 @@ jobs:
             az deployment group create \
             --name StorageAccountDeployment \
             --resource-group githubactionazure \
-            --template-file github/templ/test.json \
+            --template-file .github/templ/test.json \
             --parameters storageAccountType=Standard_GRS
